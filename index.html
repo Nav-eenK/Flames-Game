@@ -1,205 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FLAMES</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: rgb(46, 56, 53);
-      color: white;
-      font-family: Arial, Helvetica, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    h1 {
-      margin-top: 30px;
-      font-size: 2.5rem;
-      letter-spacing: 5px;
-      text-shadow: 4px 0px 4px rgb(231, 18, 18);
-    }
-
-    .container {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 90%;
-
-      max-width: 600px;
-      margin-top: 20px;
-
-      margin-bottom: 200px;
-
-      padding: 100px;
-    }
-
-    form {
-      width: 100%;
-    }
-
-    table {
-      width: 100%;
-      border-spacing: 10px;
-    }
-
-    td {
-      width: 100%;
-    }
-
-   
-
-    h2 {
-      font-weight: lighter;
-      font-size: 1.2rem;
-      margin-bottom: 5px;
-
-      margin: 8px;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      font-size: 1rem;
-      background-color: transparent;
-      border: none;
-      border-radius: 10px;
-      outline: 1px solid white;
-      color: aquamarine;
-      margin:5px;
-      
-    }
-
-    input::placeholder {
-      color: aliceblue;
-    }
-
-    button {
-      margin-top: 30px;
-      padding: 12px;
-      font-size: 1rem;
-      width: 150px;
-      background-color: rgb(79, 210, 250);
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-left:130px;
-    }
-
-    button:hover {
-      transform: translateY(-5px);
-    }
-
-    #result {
-      margin-top: 30px;
-      font-style: italic;
-      font-size: 1.2rem;
-      text-align: center;
-      color: #ffd;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      h2 {
-        font-size: 1rem;
-      }
-
-      input[type="text"] {
-        font-size: 0.95rem;
-        padding: 10px;
-      }
-
-      button {
-        font-size: 0.9rem;
-        width: 120px;
-
-        
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-  <h1>FLAMES</h1>
-  <div class="container">
-    <form onsubmit="return false;">
-      <table>
+    <center><h1>FLAMES</h1></center>
+    <div>
+<form>
+<table cellpadding="10px">
+
+    <tr>
+
+        <td><h2><i>FirstName:</i></h2></td><td><input type="text"  id="inp1" placeholder="Enter your name"></td>
+    </tr>
+
         <tr>
-          <td>
-            <h2><i>First Name:</i></h2>
-            <input type="text" id="inp1" placeholder="Enter your name" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <h2><i>Second Name:</i></h2>
-            <input type="text" id="inp2" placeholder="Enter their name" />
-          </td>
-        </tr>
-      </table>
-      <button id="check">Check</button>
-    </form>
-    <p id="result"></p>
-  </div>
 
-  <script>
-    const finalresult = document.getElementById("result");
-    const btn = document.getElementById("check");
+        <td><h2><i>SecondName:</i></h2></td><td><input type="text"  id="inp2" placeholder="Enter your name"></td>
+    </tr>
 
-    btn.addEventListener("click", () => {
-      const value1 = document.getElementById("inp1").value.trim().toLowerCase();
-      const value2 = document.getElementById("inp2").value.trim().toLowerCase();
+   
+</table>
 
-      if (value1 === "" || value2 === "") {
-        alert("Please enter both names.");
-        return;
-      }
 
-      let arr1 = value1.split("");
-      let arr2 = value2.split("");
+</form>
+<button id="check">Check</button>
+</div>
 
-      for (let i = 0; i < arr1.length; i++) {
-        let index = arr2.indexOf(arr1[i]);
-        if (index !== -1) {
-          arr1.splice(i, 1);
-          arr2.splice(index, 1);
-          i--;
+<center><p id="result"></p></center>
+
+    <style>
+        *{
+            margin:0;
+
+            padding:0;
         }
-      }
 
-      const count = arr1.length + arr2.length;
+        @media (max-width:600px){
+            h2{
+                font-size:15px;
 
-      const flames = ["f", "l", "a", "m", "e", "s"];
-      const relation = {
+            }
+            input{
+                width:50px;
+
+                height:20px;
+
+
+            }
+
+            input::placeholder{
+                font-size:15px;
+
+            }
+
+            div{
+                margin-top:50px;
+            }
+
+            p{
+                margin-top:200px
+            }
+        }
+
+        body{
+            background-color: rgb(46, 56, 53);
+
+            color: white;
+
+            overflow: hidden;
+
+          
+            
+        }
+
+        div{
+            display: flex;
+
+
+            justify-content: center;
+
+
+            align-items: center;
+
+            height: 100vh;
+
+            flex-direction: column;
+
+            position: relative;
+
+            bottom:140px;
+
+            
+            
+        }
+
+        h2{
+            font-weight:lighter;
+        }
+
+        table input{
+            padding: 10px;
+
+            width: 300px;
+
+            background-color: transparent;
+
+            border: none;
+
+            outline:1px solid;
+
+            border-radius: 10px;
+
+            font-size: 20px;
+
+            color:aquamarine;
+
+            margin:20px;
+
+        }
+
+
+
+        
+
+      
+
+        button{
+
+            padding:10px;
+
+            border-radius:6px;
+
+            font-size:18px;
+
+          
+
+            background-color:rgb(79, 210, 250);
+
+            transition:0.6s;
+
+            margin-top:50px;
+
+            width:100px;
+
+            display: flex;
+
+            justify-content: center;
+
+    
+          
+        }
+
+        h1{
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-weight: 200;
+
+            letter-spacing:5px;
+
+            display: flex;
+
+            justify-content: center;
+
+
+            text-shadow: 4px 0px 4px rgb(231, 18, 18);
+
+            margin-top: 20px;
+
+
+        }
+
+
+        button:hover{
+            transform: translateY(-5px);
+        }
+
+        input::placeholder{
+            color: aliceblue;
+        }
+
+   p{
+    display: flex;
+
+    justify-content: center;
+
+    position: relative;
+
+    bottom:400px;
+
+    font-style: italic;
+
+    font-size: 20px;
+   }
+
+
+       
+
+    </style>
+
+    <script>
+
+
+
+
+let finalresult=document.getElementById('result');
+
+let btn=document.getElementById('check')
+
+btn.addEventListener("click",()=>{
+    let value1=document.getElementById('inp1').value.trim().toLowerCase();
+
+    let value2=document.getElementById('inp2').value.trim().toLowerCase();
+
+
+
+    let arr1=value1.split("")
+
+    let arr2=value2.split("")
+    if(value1=="" || value2==""){
+        
+        
+        alert("please enter a valid name")
+
+        
+    }
+
+    for(let i=0;i<value1.length;i++){
+
+        let index=arr2.indexOf(arr1[i])
+
+        if(index!=-1){
+
+            arr1.splice(i,1);
+
+            arr2.splice(index,1);
+
+            i--;
+        }
+
+
+    }
+
+    let count=arr1.length+arr2.length
+
+    console.log(count)
+
+    let flames=['f','l','a','m','e','s']
+
+    let relation={
         f: "Friends",
         l: "Love",
         a: "Affection",
         m: "Marriage",
         e: "Enemies",
-        s: "Siblings",
-      };
+        s: "Siblings"
 
-      let idx = 0;
-      while (flames.length > 1) {
+    }
+
+    let idx=0
+
+    while (flames.length > 1) {
         idx = (idx + count - 1) % flames.length;
         flames.splice(idx, 1);
-      }
+    }
 
-      finalresult.innerHTML = `Relationship: <strong>${relation[flames[0]]}</strong>`;
-    });
-  </script>
+    finalresult.innerHTML=`Relationship:${relation[flames[0]]}`;
+
+
+})
+
+
+
+    </script>
 </body>
 </html>
