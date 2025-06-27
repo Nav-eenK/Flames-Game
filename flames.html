@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center><h1>FLAMES</h1></center>
+    <div>
+<form>
+<table cellpadding="10px">
+
+    <tr>
+
+        <td><h2><i>FirstName:</i></h2></td><td><input type="text"  id="inp1" placeholder="Enter your name"></td>
+    </tr>
+
+        <tr>
+
+        <td><h2><i>SecondName:</i></h2></td><td><input type="text"  id="inp2" placeholder="Enter your name"></td>
+    </tr>
+
+   
+</table>
+
+
+</form>
+<button id="check">Check</button>
+</div>
+
+<center><p id="result"></p></center>
+
+    <style>
+
+        body{
+            background-color: rgb(46, 56, 53);
+
+            color: white;
+            
+        }
+
+        div{
+            display: flex;
+
+
+            justify-content: center;
+
+
+            align-items: center;
+
+            height: 100vh;
+
+            flex-direction: column;
+
+            position: relative;
+
+            bottom:140px;
+            
+        }
+
+        h2{
+            font-weight:lighter;
+        }
+
+        table input{
+            padding: 10px;
+
+            width: 300px;
+
+            background-color: transparent;
+
+            border: none;
+
+            outline:1px solid;
+
+            border-radius: 10px;
+
+            font-size: 20px;
+
+            color:aquamarine
+
+        }
+
+        button{
+
+            padding:10px;
+
+            border-radius:6px;
+
+            font-size:18px;
+
+          
+
+            background-color:rgb(79, 210, 250);
+
+            transition:0.6s;
+
+            margin-top:50px;
+
+            width:100px;
+
+            display: flex;
+
+            justify-content: center;
+
+    
+          
+        }
+
+        h1{
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-weight: 200;
+
+            letter-spacing:5px;
+
+            display: flex;
+
+            justify-content: center;
+
+
+            text-shadow: 4px 0px 4px rgb(231, 18, 18);
+
+
+        }
+
+
+        button:hover{
+            transform: translateY(-5px);
+        }
+
+        input::placeholder{
+            color: aliceblue;
+        }
+
+   p{
+    display: flex;
+
+    justify-content: center;
+
+    position: relative;
+
+    bottom:400px;
+
+    font-style: italic;
+
+    font-size: 20px;
+   }
+
+
+       
+
+    </style>
+
+    <script>
+
+
+
+
+let finalresult=document.getElementById('result');
+
+let btn=document.getElementById('check')
+
+btn.addEventListener("click",()=>{
+    let value1=document.getElementById('inp1').value.trim().toLowerCase();
+
+    let value2=document.getElementById('inp2').value.trim().toLowerCase();
+
+
+
+    let arr1=value1.split("")
+
+    let arr2=value2.split("")
+    if(value1=="" || value2==""){
+        
+        
+        alert("please enter a valid name")
+
+        
+    }
+
+    for(let i=0;i<value1.length;i++){
+
+        let index=arr2.indexOf(arr1[i])
+
+        if(index!=-1){
+
+            arr1.splice(i,1);
+
+            arr2.splice(index,1);
+
+            i--;
+        }
+
+
+    }
+
+    let count=arr1.length+arr2.length
+
+    console.log(count)
+
+    let flames=['f','l','a','m','e','s']
+
+    let relation={
+        f: "Friends",
+        l: "Love",
+        a: "Affection",
+        m: "Marriage",
+        e: "Enemies",
+        s: "Siblings"
+
+    }
+
+    let idx=0
+
+    while (flames.length > 1) {
+        idx = (idx + count - 1) % flames.length;
+        flames.splice(idx, 1);
+    }
+
+    finalresult.innerHTML=`Relationship:${relation[flames[0]]}`;
+
+
+})
+
+
+
+    </script>
+</body>
+</html>
