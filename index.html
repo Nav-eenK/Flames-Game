@@ -1,289 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FLAMES</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: rgb(46, 56, 53);
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 200;
+      letter-spacing: 5px;
+      text-shadow: 4px 0px 4px rgb(231, 18, 18);
+      margin-top: 30px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+      min-height: 80vh;
+      
+    }
+
+    table {
+      margin: 20px 0;
+    }
+
+    td {
+      padding: 10px;
+    }
+
+    h2 {
+      font-weight: lighter;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    input {
+      padding: 10px;
+      width:500%;
+      max-width:300px;
+      background-color: transparent;
+      border: none;
+      outline: 1px solid;
+      border-radius: 10px;
+      font-size: 18px;
+      color: aquamarine;
+      margin-right:70px;
+    }
+
+    input::placeholder {
+      color: aliceblue;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 18px;
+      background-color: rgb(79, 210, 250);
+      border: none;
+      cursor: pointer;
+      transition: 0.3s ease;
+      width: 150px;
+      max-width: 90%;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+    }
+
+    #result {
+      margin-top: 40px;
+      font-size: 20px;
+      font-style: italic;
+      text-align: center;
+    }
+    #check{
+        margin-left:60px;
+    }
+
+ 
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px;
+        margin-top: 20px;
+      }
+
+      h2 {
+        font-size: 16px;
+        text-align: center;
+      }
+
+      input {
+        font-size: 16px;
+        padding: 8px;
+      }
+
+      button {
+        font-size: 16px;
+        padding: 8px;
+
+        margin-right:50px;
+      }
+
+      #result {
+        font-size: 18px;
+        margin-top: 30px;
+      }
+
+      table {
+        width: 100%;
+      }
+
+      td {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <center><h1>FLAMES</h1></center>
-    <div>
-<form>
-<table cellpadding="10px">
-
-    <tr>
-
-        <td><h2><i>FirstName:</i></h2></td><td><input type="text"  id="inp1" placeholder="Enter your name"></td>
-    </tr>
-
+  <h1>FLAMES</h1>
+  <div class="container">
+    <form onsubmit="return false">
+      <table>
         <tr>
+          <td><h2><i>First Name:</i></h2></td>
+          <td><input type="text" id="inp1" placeholder="Enter your name" /></td>
+        </tr>
+        <tr>
+          <td><h2><i>Second Name:</i></h2></td>
+          <td><input type="text" id="inp2" placeholder="Enter your name" /></td>
+        </tr>
+      </table>
+      <div style="text-align:center">
+        <button id="check">Check</button>
+      </div>
+    </form>
+    <p id="result"></p>
+  </div>
 
-        <td><h2><i>SecondName:</i></h2></td><td><input type="text"  id="inp2" placeholder="Enter your name"></td>
-    </tr>
+  <script>
+    let finalresult = document.getElementById("result");
+    let btn = document.getElementById("check");
 
-   
-</table>
+    btn.addEventListener("click", () => {
+      let value1 = document.getElementById("inp1").value.trim().toLowerCase();
+      let value2 = document.getElementById("inp2").value.trim().toLowerCase();
 
+      if (value1 === "" || value2 === "") {
+        alert("Please enter valid names.");
+        return;
+      }
 
-</form>
-<button id="check">Check</button>
-</div>
+      let arr1 = value1.split("");
+      let arr2 = value2.split("");
 
-<center><p id="result"></p></center>
-
-    <style>
-        *{
-            margin:0;
-
-            padding:0;
+      for (let i = 0; i < arr1.length; i++) {
+        let index = arr2.indexOf(arr1[i]);
+        if (index !== -1) {
+          arr1.splice(i, 1);
+          arr2.splice(index, 1);
+          i--;
         }
-
-        @media (max-width:400px){
-            h2{
-                margin:0;
-                padding: 0;
-                font-size:15px;
-
-                margin-left:0px;
-
-            }
-            input{
-                width:200x;
-
-                height:20px;
-
-
-                
-
-
-            }
-            button{
-                margin-left:30px;
-            }
-
-            input::placeholder{
-                font-size:15px;
-
-            }
-
-            div{
-                margin-top:50px;
-            }
-
-            p{
-                margin-top:200px
-            }
-        }
-
-        body{
-            background-color: rgb(46, 56, 53);
-
-            color: white;
-
-            overflow: hidden;
-
-          
-            
-        }
-
-        div{
-            display: flex;
-
-
-            justify-content: center;
-
-
-            align-items: center;
-
-            height: 100vh;
-
-            flex-direction: column;
-
-            position: relative;
-
-            bottom:140px;
-
-            
-            
-        }
-
-        h2{
-            font-weight:lighter;
-        }
-
-        table input{
-            padding: 10px;
-
-            width:200px;
-
-            background-color: transparent;
-
-            border: none;
-
-            outline:1px solid;
-
-            border-radius: 10px;
-
-            font-size: 20px;
-
-            color:aquamarine;
-
-            margin:20px;
-
-        }
-
-
-
-        
-
-      
-
-        button{
-
-            padding:10px;
-
-            border-radius:6px;
-
-            font-size:18px;
-
-          
-
-            background-color:rgb(79, 210, 250);
-
-            transition:0.6s;
-
-            margin-top:50px;
-
-            width:100px;
-
-            display: flex;
-
-            justify-content: center;
-
-    
-          
-        }
-
-        h1{
-            font-family: Arial, Helvetica, sans-serif;
-
-            font-weight: 200;
-
-            letter-spacing:5px;
-
-            display: flex;
-
-            justify-content: center;
-
-
-            text-shadow: 4px 0px 4px rgb(231, 18, 18);
-
-            margin-top: 20px;
-
-
-        }
-
-
-        button:hover{
-            transform: translateY(-5px);
-        }
-
-        input::placeholder{
-            color: aliceblue;
-        }
-
-   p{
-    display: flex;
-
-    justify-content: center;
-
-    position: relative;
-
-    bottom:400px;
-
-    font-style: italic;
-
-    font-size: 20px;
-   }
-
-
-       
-
-    </style>
-
-    <script>
-
-
-
-
-let finalresult=document.getElementById('result');
-
-let btn=document.getElementById('check')
-
-btn.addEventListener("click",()=>{
-    let value1=document.getElementById('inp1').value.trim().toLowerCase();
-
-    let value2=document.getElementById('inp2').value.trim().toLowerCase();
-
-
-
-    let arr1=value1.split("")
-
-    let arr2=value2.split("")
-    if(value1=="" || value2==""){
-        
-        
-        alert("please enter a valid name")
-
-        
-    }
-
-    for(let i=0;i<value1.length;i++){
-
-        let index=arr2.indexOf(arr1[i])
-
-        if(index!=-1){
-
-            arr1.splice(i,1);
-
-            arr2.splice(index,1);
-
-            i--;
-        }
-
-
-    }
-
-    let count=arr1.length+arr2.length
-
-    console.log(count)
-
-    let flames=['f','l','a','m','e','s']
-
-    let relation={
+      }
+
+      let count = arr1.length + arr2.length;
+      let flames = ["f", "l", "a", "m", "e", "s"];
+      let relation = {
         f: "Friends",
         l: "Love",
         a: "Affection",
         m: "Marriage",
         e: "Enemies",
         s: "Siblings"
+      };
 
-    }
-
-    let idx=0
-
-    while (flames.length > 1) {
+      let idx = 0;
+      while (flames.length > 1) {
         idx = (idx + count - 1) % flames.length;
         flames.splice(idx, 1);
-    }
+      }
 
-    finalresult.innerHTML=`Relationship:${relation[flames[0]]}`;
-
-
-})
-
-
-
-    </script>
+      finalresult.innerHTML = `Relationship: ${relation[flames[0]]}`;
+    });
+  </script>
 </body>
 </html>
